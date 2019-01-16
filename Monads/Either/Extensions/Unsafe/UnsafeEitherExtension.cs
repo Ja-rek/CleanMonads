@@ -2,7 +2,7 @@ using System;
 
 namespace Monads.Either.Unsafe
 {
-    public static class UnsafeMaybeExtension
+    public static class UnsafeEitherExtension
     {
         private const string ErrorMessage = "Value can not be null.";
 

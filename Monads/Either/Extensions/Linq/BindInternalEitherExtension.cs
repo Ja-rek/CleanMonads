@@ -4,7 +4,7 @@ using static Monads.Either.EitherFactory;
 
 namespace Monads.Either.Linq
 {
-    internal static class BindInternalMaybeExtension
+    internal static class BindInternalEitherExtension
     {
         public static Either<TLeft, TResult> Bind<TLeft, TRight, TResult>(
             this Either<TLeft, TRight> source,
