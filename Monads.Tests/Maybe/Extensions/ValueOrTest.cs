@@ -7,7 +7,7 @@ namespace Monads.Tests.Maybe.Extensions
     internal class ValueOrTest : TestTemplate
     {
         [Test]
-        public void ValueOr_WhenMaybeHasValue_RetrunsValueFromMonad()
+        public void ValueOr_WhenMaybeHasValue_RetrunsValue()
         {
             var actual = maybeInt_10.ValueOr(() => 20);
 

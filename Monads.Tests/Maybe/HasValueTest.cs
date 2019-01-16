@@ -32,7 +32,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void HasValue_WhenMaybeHasNoValueAnConditionIsMet_RetrunsTrue()
+        public void HasValue_WhenMaybeHasValueAnConditionIsNotMet_RetrunsTrue()
         {
             Assert.False(maybeStr_Any.HasValue(x => x == "wrong string"));
             Assert.False(maybeInt_10.HasValue(x => x < 5));
