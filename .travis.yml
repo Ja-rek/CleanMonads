@@ -4,7 +4,7 @@ dotnet: 2.1.402
 dist: trusty
 solution: CleanMonads.sln
 install:
- - dotnet restore 
+ - dotnet restore CleanMonads.sln 
 script:
  - dotnet build
  - dotnet test Monads.Tests
