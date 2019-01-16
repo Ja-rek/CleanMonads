@@ -2,9 +2,9 @@ language: csharp
 mono: none
 dotnet: 2.1.402
 dist: trusty
-solution: Monads.sln
+solution: CleanMonads.sln
 install:
- - dotnet restore Monads.sln
+ - dotnet restore 
 script:
  - dotnet build
  - dotnet test Monads.Tests
