@@ -1,4 +1,4 @@
-using Monads.Common;
+using System;
 
 namespace Monads.Maybe
 {
@@ -6,27 +6,30 @@ namespace Monads.Maybe
     {
         public static Maybe<TData> Just<TData>(TData value)
         {
-            Assert.ArgumentIsNotNull(value);
-
             return value;
-        }
-
-        public static Maybe<TData> Just<TData>(TData? value) where TData : struct 
-        {
-            Assert.ArgumentIsNotNull(value.Value);
-
-            return value.Value;
         }
 
         public static Maybe<TData> MaybeFrom<TData>(TData value) 
         {
             return value;
-        }        
+        }
+
+        public static Maybe<TData> MaybeFrom<TData>(Func<TData> value) 
+        {
+            return value();
+        }
 
         public static Maybe<TData> MaybeFrom<TData>(TData? value) where TData : struct 
         {
-            return value.HasValue ? (Maybe<TData>)value.Value : Nothing;
-        }        
+            if (value.HasValue) return value.Value;
+
+            return Nothing;
+        }
+
+        public static Maybe<TData> MaybeFrom<TData>(Func<TData?> value) where TData : struct
+        {
+            return MaybeFrom(value());
+        }
 
         public static Maybe<INothing> Nothing 
         { 
