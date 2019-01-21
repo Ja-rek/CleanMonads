@@ -21,7 +21,7 @@ namespace Monads.Either.Linq
                 return Right(predicateArg);
             }
 
-            return Left(source.Left);
+            return source.Left;
         }
 
         public static Either<TLeft, TResult> Bind<TLeft, TRight, TResult>(
@@ -34,7 +34,7 @@ namespace Monads.Either.Linq
 
             EitherAssert.LeftOrRightExist(predicateArg);
 
-            return source.IsRight() ? predicateArg : Left(source.Left);
+            return source.IsRight() ? predicateArg : source.Left;
         }
     }
 }
