@@ -7,15 +7,9 @@ namespace Monads.Either
     {
         public static Either<TLeft, TRight> ToEither<TLeft, TRight>(this TRight right, TLeft left)
         {
-            if (right != null) return new Either<TLeft, TRight>(right);
-            if (left != null) return new Either<TLeft, TRight>(left);
-                
-            throw new InvalidOperationException("Both parameters cannot be null.");
-        }
+            if (right != null) return right;
 
-        public static Either<NotDefined, TRight> ToRight<TRight>(this TRight right)
-        {
-            return new Either<NotDefined, TRight>(right);
+            return left;
         }
 
         public static Either<TLeft, TRight> ToEither<TLeft, TRight>(this TRight right, Func<TLeft> left)
@@ -23,9 +17,26 @@ namespace Monads.Either
             return right.ToEither(left());
         }
 
+        public static Either<TLeft, TRight> ToEither<TLeft, TRight>(this TRight? right, TLeft left) where TRight : struct
+        {
+            if (right.HasValue) return right.Value;
+                
+            return left;
+        }
+
+        public static Either<TLeft, TRight> ToEither<TLeft, TRight>(this TRight? right, Func<TLeft> left) where TRight : struct
+        {
+            return right.ToEither(left());
+        }
+
+        public static Either<NotDefined, TRight> ToRight<TRight>(this TRight right)
+        {
+            return right;
+        }
+
         public static Either<TLeft, NotDefined> ToLeft<TLeft>(this TLeft left)
         {
-            return new Either<TLeft, NotDefined>(left);
+            return left;
         }
 
         public static Either<TLeft, TRight> ToRightIf<TLeft, TRight>(
@@ -33,9 +44,9 @@ namespace Monads.Either
             Func<TRight, bool> condition, 
             TLeft left)
         {
-            if (condition(right)) return Right(right);
+            if (condition(right)) return right;
                 
-            return Left(left);
+            return left;
         }
 
         public static Either<TLeft, TRight> ToRightIf<TLeft, TRight>(
@@ -51,9 +62,9 @@ namespace Monads.Either
             Func<TRight, bool> condition, 
             TLeft left)
         {
-            if (condition(right)) return Left(left);
+            if (condition(right)) return left;
                 
-            return Right(right);
+            return right;
         }
 
         public static Either<TLeft, TRight> ToLeftIf<TLeft, TRight>(
