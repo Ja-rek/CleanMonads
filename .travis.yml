@@ -15,7 +15,6 @@ deploy:
  script: dotnet nuget push Monads/bin/Release/CleanMonads.*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
  on:
   tags: true
-  condition: $TRAVIS_TAG =~ ^(\d+\.)?(\d+\.)?(\*|\d+)$
 branches:
  only:
  - master
