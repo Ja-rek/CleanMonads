@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Monads.Common;
-using static Monads.Either.EitherFactory;
 
 namespace Monads.Either.Enumerable
 {
@@ -12,9 +11,9 @@ namespace Monads.Either.Enumerable
         {
             Assert.ArgumentIsNotNull(source);
 
-            if (source.Count() == 1) return Right(source.Single());
+            if (source.Count() == 1) return source.Single();
 
-            return Left(left);
+            return left;
         }
 
         public static Either<TLeft, TRight> SingleOrLeft<TLeft, TRight>(
