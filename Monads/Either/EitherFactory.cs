@@ -1,5 +1,4 @@
 using System;
-using Monads.Common;
 
 namespace Monads.Either
 {
@@ -19,5 +18,21 @@ namespace Monads.Either
         {
             return right.ToEither(left);
         }
+
+        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, TRight? right) where TRight : struct
+        {
+            return right.Value.ToEither(left);
+        }
+
+        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, Func<TRight?> right) where TRight : struct
+        {
+            return right().Value.ToEither(left);
+        }
+
+        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, Func<TRight> right)
+        {
+            return right().ToEither(left);
+        }
+
     }
 }
