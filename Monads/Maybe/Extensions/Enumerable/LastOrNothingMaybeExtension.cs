@@ -12,7 +12,7 @@ namespace Monads.Maybe.Enumerable
         {
             Assert.ArgumentIsNotNull(source);
 
-            return source.Any() ? MaybeFrom(source.Last()) : MaybeFactory.Nothing;
+            return source.Any() ? MaybeFrom(source.Last()) : Nothing;
         }
 
         public static Maybe<TSource> LastOrNothing<TSource>(
@@ -21,7 +21,7 @@ namespace Monads.Maybe.Enumerable
         {
             Assert.ArgumentIsNotNull(source);
 
-            return source.Any(condition) ? MaybeFrom(source.Last(condition)) : MaybeFactory.Nothing;
+            return source.Any(condition) ? MaybeFrom(source.Last(condition)) : Nothing;
         }
     }
 }

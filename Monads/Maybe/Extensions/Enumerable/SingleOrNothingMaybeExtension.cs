@@ -12,7 +12,7 @@ namespace Monads.Maybe.Enumerable
         {
             Assert.ArgumentIsNotNull(source);
 
-            return source.Count() == 1 ? MaybeFrom(source.Single()) : MaybeFactory.Nothing;
+            return source.Count() == 1 ? MaybeFrom(source.Single()) : Nothing;
         }
 
         public static Maybe<TSource> SingleOrNothing<TSource>(
