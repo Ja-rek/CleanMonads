@@ -19,7 +19,7 @@ namespace Monads.Maybe.Enumerable
                 return Nothing;
             }
 
-            return Just(item);
+            return item;
         }
     }
 }
