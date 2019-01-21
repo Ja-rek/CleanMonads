@@ -47,6 +47,8 @@ namespace Monads.Tests.Maybe
         protected static string str_20 = "20";
 
         protected static int int_10 = 10;
+        protected static int? nullableInt_10 = 10;
+        protected static int? nullableInt_Null = null;
         protected static int int_20 = 20;
         protected static int int_Any = 69;
     }
