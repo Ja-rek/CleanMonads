@@ -9,6 +9,11 @@ namespace Monads.Maybe.Unsafe
             return source.Value;
         }
 
+        public static TSome? ToNullable<TSome>(this Maybe<TSome> source) where TSome : struct
+        {
+            return source.Value;
+        }
+
         public static TSome Value<TSome>(this Maybe<TSome> source)
         {
             var value = source.Value;
