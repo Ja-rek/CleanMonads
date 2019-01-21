@@ -47,7 +47,7 @@ namespace Monads.Either.Linq
                 return Right(source.Right);
             }
                 
-            return Left(left);
+            return left;
         }
 
         public static Either<TLeft, TRight> Where<TLeft, TRight>(
