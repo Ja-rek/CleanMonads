@@ -36,5 +36,21 @@ namespace Monads.Tests.Maybe.Extensions
 
             Assert.True(maybeAnyString.HasValue());
         }
+
+        [Test]
+        public void ToMaybe_WhenSourceIsNullableAndContainValue_MaybeHasValue()
+        {
+            var maybeAnyString = nullableInt_10.ToMaybe();
+
+            Assert.True(maybeAnyString.HasValue());
+        }
+
+        [Test]
+        public void ToMaybe_WhenSourceIsNullableAndContainNoValue_MaybeHasNoValue()
+        {
+            var maybeAnyString = nullableInt_Null.ToMaybe();
+
+            Assert.False(maybeAnyString.HasValue());
+        }
     }
 }
