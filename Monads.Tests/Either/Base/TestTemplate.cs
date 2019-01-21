@@ -42,6 +42,8 @@ namespace Monads.Tests.Either
         protected static IEnumerable<int> listOf_1 = new int[] { 1 };
 
         protected static int int_10 = 10;
+        protected static int? nullableInt_10 = 10;
+        protected static int? nullableInt_Null = null;
         protected static int int_20 = 20;
         protected static int int_Any = 69;
         protected static int int_Default = default(int);
