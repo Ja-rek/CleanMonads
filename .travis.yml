@@ -6,8 +6,16 @@ solution: CleanMonads.sln
 install:
  - dotnet restore CleanMonads.sln 
 script:
- - dotnet build
+ - dotnet build -c Release
  - dotnet test Monads.Tests
+ - dotnet pack -c Release
+deploy:
+ skip_cleanup: true
+ provider: script
+ script: dotnet nuget push Monads/bin/Release/CleanMonads.*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
+ on:
+  tags: true
+  condition: $TRAVIS_TAG =~ ^(\d+\.)?(\d+\.)?(\*|\d+)$
 branches:
-  only:
-  - master
+ only:
+ - master
