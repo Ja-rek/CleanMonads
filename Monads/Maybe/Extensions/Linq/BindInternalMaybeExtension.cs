@@ -9,14 +9,14 @@ namespace Monads.Maybe.Linq
             this Maybe<TSome> maybe,
             Func<TSome, TResult> predicate)
         {
-            return maybe.HasValue() ? predicate(maybe.Value) : (Maybe<TResult>)MaybeFactory.Nothing;
+            return maybe.HasValue() ? predicate(maybe.Value) : (Maybe<TResult>)Nothing;
         }
 
         public static Maybe<TResult> Bind<TSome, TResult>(
             this Maybe<TSome> maybe,
             Func<TSome, Maybe<TResult>> predicate)
         {
-            return maybe.HasValue() ? predicate(maybe.Value) : (Maybe<TResult>)MaybeFactory.Nothing;
+            return maybe.HasValue() ? predicate(maybe.Value) : (Maybe<TResult>)Nothing;
         }
     }
 }

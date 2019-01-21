@@ -1,7 +1,6 @@
 using System;
 using Monads.Common;
 using Monads.Maybe.Unsafe;
-using static Monads.Maybe.MaybeFactory;
 
 namespace Monads.Maybe.Linq
 {
