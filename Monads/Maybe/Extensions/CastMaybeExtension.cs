@@ -1,7 +1,7 @@
 using System;
-using static Monads.Maybe.MaybeFactory;
+using static Monads.MaybeFactory;
 
-namespace Monads.Maybe
+namespace Monads
 {
     public static class CastMaybeExtension
     {
@@ -17,7 +17,7 @@ namespace Monads.Maybe
 
         public static Maybe<TData> ToMaybe<TData>(this TData? source) where TData : struct
         {
-            return MaybeFrom(source);
+            return MaybeOf<TData>(source);
         }
 
         public static Maybe<TData> ToJust<TData>(this TData source)
