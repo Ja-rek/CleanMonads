@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using static Monads.Either.EitherFactory;
+using static Monads.EitherFactory;
 
 namespace Monads.Tests.Either
 {

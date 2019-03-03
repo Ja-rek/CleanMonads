@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Monads.Maybe;
-using static Monads.Maybe.MaybeFactory;
+using static Monads.MaybeFactory;
 
 namespace Monads.Tests.Maybe
 {

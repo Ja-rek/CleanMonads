@@ -1,6 +1,5 @@
 using NUnit.Framework;
-using Monads.Either;
-using Monads.Either.Unsafe;
+using Monads.Extensions.Unsafe;
 
 namespace Monads.Tests.Either.Extensions
 {

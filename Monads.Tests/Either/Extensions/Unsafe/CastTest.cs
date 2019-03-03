@@ -1,9 +1,9 @@
 using NUnit.Framework;
 using System;
-using Monads.Either.Unsafe;
-using static Monads.Either.EitherFactory;
+using Monads.Extensions.Unsafe;
+using static Monads.EitherFactory;
 
-namespace Monads.Tests.Either.Extensions
+namespace Monads.Tests.Either.Extensions.Unsafe
 {
     internal class UnsafeTest : TestTemplate
     {

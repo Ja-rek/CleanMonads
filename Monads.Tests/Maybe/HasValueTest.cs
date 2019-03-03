@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using static Monads.Maybe.MaybeFactory;
+using static Monads.MaybeFactory;
 
 namespace Monads.Tests.Maybe
 {

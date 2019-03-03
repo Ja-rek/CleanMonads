@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Monads.Either;
-using static Monads.Either.EitherFactory;
+using static Monads.EitherFactory;
 
 namespace Monads.Tests.Either
 {
@@ -15,8 +14,8 @@ namespace Monads.Tests.Either
         protected static Either<string, string> rightStr_20 = Right("20");
         protected static Either<string, string> rightStr_Any = Right("69");
 
-        protected static Either<string, string> rightStr_Default = EitherFrom("Error", default(string));
-        protected static Either<string, int> rightInt_Default = EitherFrom("Error", default(int));
+        protected static Either<string, string> rightStr_Default = EitherOf("Error", default(string));
+        protected static Either<string, int> rightInt_Default = EitherOf("Error", default(int));
 
         protected static Either<string, int> leftStr_Error = "Error";
         protected static Either<string, int> leftStr_Any = "69";

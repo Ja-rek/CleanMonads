@@ -1,19 +1,19 @@
 using NUnit.Framework;
 using System;
-using Monads.Maybe.Unsafe;
+using Monads.Extensions.Unsafe;
 
-namespace Monads.Tests.Maybe.Extensions
+namespace Monads.Tests.Maybe.Extensions.Unsafe
 {
     internal class UnsafeTest : TestTemplate
     {
         [Test]
-        public void ValueOrFail_WhenArgumentIsNull_ThrowException()
+        public void Value_WhenArgumentIsNull_ThrowException()
         {
             Assert.Throws<InvalidOperationException>(() => maybeStr_Default.Value());
         }
 
         [Test]
-        public void ValueOrDefault_WhenArgumentIsNull_ThrowException()
+        public void ValueOrFail_WhenArgumentIsNull_ThrowException()
         {
             var message = "Test";
 

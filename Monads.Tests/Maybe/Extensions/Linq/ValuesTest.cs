@@ -1,10 +1,9 @@
 using NUnit.Framework;
-using Monads.Maybe.Enumerable;
-using Monads.Maybe;
-using static Monads.Maybe.MaybeFactory;
+using static Monads.MaybeFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Monads.Extensions.Linq;
 
 namespace Monads.Tests.Maybe.Extensions.Linq
 {
