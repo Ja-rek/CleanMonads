@@ -1,6 +1,6 @@
 using System;
 
-namespace Monads.Maybe
+namespace Monads
 {
     public static class MaybeFactory
     {
@@ -9,31 +9,36 @@ namespace Monads.Maybe
             return value;
         }
 
-        public static Maybe<TData> MaybeFrom<TData>(TData value) 
+        public static Maybe<TData> MaybeOf<TData>(TData value) 
         {
             return value;
         }
 
-        public static Maybe<TData> MaybeFrom<TData>(Func<TData> value) 
+        public static Maybe<TData> MaybeOf<TData>(Func<TData> value) 
         {
             return value();
         }
 
-        public static Maybe<TData> MaybeFrom<TData>(TData? value) where TData : struct 
+        public static Maybe<TData> MaybeOf<TData>(TData? value) where TData : struct 
         {
             if (value.HasValue) return value.Value;
 
             return Nothing;
         }
 
-        public static Maybe<TData> MaybeFrom<TData>(Func<TData?> value) where TData : struct
+        public static Maybe<TData> MaybeOf<TData>(Func<TData?> value) where TData : struct
         {
-            return MaybeFrom(value());
+            return MaybeOf(value());
         }
 
         public static Maybe<INothing> Nothing 
         { 
             get => new Maybe<INothing>(false); 
+        }
+
+        public static Maybe<TResult> NothingOf<TResult>() 
+        { 
+            return new Maybe<TResult>(false); 
         }
     }
 }
