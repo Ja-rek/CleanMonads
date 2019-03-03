@@ -1,20 +1,15 @@
-using System;
-using Monads.Common;
-
-namespace Monads.Maybe
+namespace Monads
 {
     public static class ValueOrMaybeExtension
     {
-        public static TData ValueOr<TData>(this Maybe<TData> source, TData alternative)
-        { 
-            Assert.ArgumentIsNotNull(alternative);
-
-            return !source.HasValue() ? (TData)alternative : source.Value;
+        public static string ValueOrEmpty(this Maybe<string> text)
+        {
+            return text.ValueOr(string.Empty);
         }
 
-        public static TData ValueOr<TData>(this Maybe<TData> source, Func<TData> alternativeFactory)
+        public static int ValueOrZero(this Maybe<int> text)
         {
-            return source.ValueOr(alternativeFactory());
+            return text.ValueOr(0);
         }
     }
 }
