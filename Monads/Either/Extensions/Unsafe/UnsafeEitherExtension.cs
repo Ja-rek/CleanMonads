@@ -1,6 +1,6 @@
 using System;
 
-namespace Monads.Either.Unsafe
+namespace Monads.Extensions.Unsafe
 {
     public static class UnsafeEitherExtension
     {
@@ -8,50 +8,50 @@ namespace Monads.Either.Unsafe
 
         public static Either<TLeft, TRight> RightOrDefault<TLeft, TRight>(this Either<TLeft, TRight> source)
         {
-            return source.Right;
+            return source.ForceRight;
         }
 
         public static Either<TLeft, TRight> LeftOrDefault<TLeft, TRight>(this Either<TLeft, TRight> source)
         {
-            return source.Left;
+            return source.ForceLeft;
         }
 
         public static  TRight Right<TLeft, TRight>(this Either<TLeft, TRight> source)
         {
-            return GetOrFail(source.Right, ErrorMessage);
+            return GetOrFail(source.ForceRight, ErrorMessage);
         }
 
         public static TLeft Left<TLeft, TRight>(this Either<TLeft, TRight> source)
         {
-            return GetOrFail(source.Left, ErrorMessage);
+            return GetOrFail(source.ForceLeft, ErrorMessage);
         }
 
         public static Either<TLeft, TRight> RightOrFail<TLeft, TRight>(
             this Either<TLeft, TRight> source,
             string message)
         {
-            return GetOrFail(source.Right, message);
+            return GetOrFail(source.ForceRight, message);
         }
 
         public static Either<TLeft, TRight> RightOrFail<TLeft, TRight>(
             this Either<TLeft, TRight> source,
             Func<string> message)
         {
-            return GetOrFail(source.Right, message());
+            return GetOrFail(source.ForceRight, message());
         }
 
         public static Either<TLeft, TRight> LeftOrFail<TLeft, TRight>(
             this Either<TLeft, TRight> source,
             string message)
         {
-            return GetOrFail(source.Right, message);
+            return GetOrFail(source.ForceLeft, message);
         }
 
         public static Either<TLeft, TRight> LeftOrFail<TLeft, TRight>(
             this Either<TLeft, TRight> source,
             Func<string> message)
         {
-            return GetOrFail(source.Right, message());
+            return GetOrFail(source.ForceRight, message());
         }
 
         private static TResult GetOrFail<TResult>(TResult right, string message)
