@@ -1,61 +1,175 @@
 using System;
-using Monads.Common;
-using static Monads.Either.EitherFactory;
+using System.Collections.Generic;
+using System.Linq;
+using Monads.Utils;
 
-namespace Monads.Either.Linq
+namespace Monads.Extensions.Linq
 {
     public static class LinqEitherExtension
     {
-        public static Either<TLeft, TResult> Select<TLeft, TRight, TResult>(
-            this Either<TLeft, TRight> source, 
-            Func<TRight, TResult> selector)
+        public static string AggregateLefts<TRight>(
+            this IEnumerable<Either<string, TRight>> source)
         {
-            Assert.ArgumentIsNotNull(selector(source.Right));
+            Assert.ArgumentIsNotNull(source, nameof(source));
 
-            return source.Bind(selector);
+            return source
+                .Where(x => x.IsLeft())
+                .Select(x => x.ForceLeft)
+                .Aggregate((x, y) => $"{x} {y}");
         }
 
-        public static Either<TLeft, TResult> SelectMany<TLeft, TRight, TResult>(
-            this Either<TLeft, TRight> source, 
-            Func<TRight, Either<TLeft, TResult>> selector)
+        public static Either<TLeft, TRight> ElementAtOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source,
+            int index,
+            TLeft left)
         {
-            Assert.ArgumentIsNotNull(selector(source.Right));
+            Assert.ArgumentIsNotNull(source, nameof(source));
 
-            return source.Bind(selector);
+            var item = source.ElementAtOrDefault(index);
+
+            if (EqualityComparer<TRight>.Default.Equals(item, default))
+            {
+                return left;
+            }
+                
+            return  item;
         }
 
-        public static Either<TLeft, TResult> SelectMany<TLeft, TRight, TCollection, TResult>(
-            this Either<TLeft, TRight> source, 
-            Func<TRight, Either<TLeft, TCollection>> selector,
-            Func<TRight, TCollection, TResult> resultSelector)
+        public static Either<TLeft, TRight> ElementAtOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source,
+            int index,
+            Func<TLeft> leftFactory)
         {
-            Assert.ArgumentIsNotNull(selector(source.Right));
-
-            return source.Bind(x => selector(x).Bind(y => resultSelector(x, y)));
+            return source.ElementAtOrLeft(index, leftFactory());
         }
 
-        public static Either<TLeft, TRight> Where<TLeft, TRight>(
-            this Either<TLeft, TRight> source, 
+        public static Either<TLeft, TRight> FirstOrLeft<TLeft, TRight>(this IEnumerable<TRight> source, TLeft left)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            if (source.Any()) return source.First();
+
+            return left; 
+        }
+
+        public static Either<TLeft, TRight> FirstOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
             Func<TRight, bool> condition,
             TLeft left)
         {
-            Assert.ArgumentIsNotNull(left, nameof(left));
+            Assert.ArgumentIsNotNull(source);
 
-            if (source.IsRight() && condition(source.Right)) 
+            if (source.Any(condition)) return source.First(condition);
+
+            return left; 
+        }
+
+        public static Either<TLeft, TRight> FirstOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TLeft> leftFactory)
+        {
+            return source.FirstOrLeft(leftFactory());
+        }
+
+        public static Either<TLeft, TRight> FirstOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TRight, bool> condition,
+            Func<TLeft> leftFactory)
+        {
+            return source.FirstOrLeft(condition, leftFactory());
+        }
+
+        public static Either<TLeft, TRight> LastOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            TLeft left)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            var item = source.LastOrDefault();
+
+            return source.Any() ? (Either<TLeft, TRight>)item : left;
+        }
+
+        public static Either<TLeft, TRight> LastOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TRight, bool> condition,
+            TLeft left)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            if (source.Any(condition))
             {
-                Console.WriteLine(source.Right);
-                return Right(source.Right);
+                return source.First(condition);
             }
-                
+
             return left;
         }
 
-        public static Either<TLeft, TRight> Where<TLeft, TRight>(
-            this Either<TLeft, TRight> source, 
+        public static Either<TLeft, TRight> LastOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
             Func<TRight, bool> condition,
-            Func<TLeft> left)
+            Func<TLeft> leftFactory)
         {
-            return source.Where(condition, left());
+            return source.LastOrLeft(condition, leftFactory());
+        }
+
+        public static Either<TLeft, TRight> LastOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TLeft> leftFactory)
+        {
+            return source.LastOrLeft(leftFactory());
+        }
+
+        public static IEnumerable<TLeft> Lefts<TLeft, TRight>(
+            this IEnumerable<Either<TLeft, TRight>> source)
+        {
+            Assert.ArgumentIsNotNull(source, nameof(source));
+
+            return source.Where(x => x.IsLeft()).Select(x => x.ForceLeft);
+        }
+
+        public static IEnumerable<TRight> Rights<TLeft, TRight>(
+            this IEnumerable<Either<TLeft, TRight>> source)
+        {
+            Assert.ArgumentIsNotNull(source, nameof(source));
+
+            return source.Where(x => x.IsRight()).Select(x => x.ForceRight);
+        }
+
+        public static Either<TLeft, TRight> SingleOrLeft<TLeft, TRight>(this IEnumerable<TRight> source, TLeft left)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            if (source.Count() == 1) return source.Single();
+
+            return left;
+        }
+
+        public static Either<TLeft, TRight> SingleOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TRight, bool> condition,
+            TLeft left)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            return source
+                .Where(condition)
+                .SingleOrLeft(left);
+        }
+
+        public static Either<TLeft, TRight> SingleOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TRight, bool> condition,
+            Func<TLeft> leftFactory)
+        {
+            return source.SingleOrLeft(condition, leftFactory());
+        }
+
+        public static Either<TLeft, TRight> SingleOrLeft<TLeft, TRight>(
+            this IEnumerable<TRight> source, 
+            Func<TLeft> leftFactory)
+        {
+            return source.SingleOrLeft(leftFactory());
         }
     }
 }
