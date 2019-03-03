@@ -1,6 +1,6 @@
-namespace Monads.Either
+namespace Monads
 {
-    public class NotDefined
+    public abstract class NotDefined
     {
     }
 }
