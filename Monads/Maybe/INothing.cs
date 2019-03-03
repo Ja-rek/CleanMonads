@@ -1,4 +1,4 @@
-namespace Monads.Maybe
+namespace Monads
 {
     public interface INothing
     {
