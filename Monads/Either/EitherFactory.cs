@@ -1,6 +1,6 @@
 using System;
 
-namespace Monads.Either
+namespace Monads
 {
     public static class EitherFactory
     {
@@ -14,25 +14,24 @@ namespace Monads.Either
             return right.ToRight();
         }
 
-        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, TRight right)
+        public static Either<TLeft, TRight> EitherOf<TRight, TLeft>(TLeft left, TRight right)
         {
             return right.ToEither(left);
         }
 
-        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, TRight? right) where TRight : struct
+        public static Either<TLeft, TRight> EitherOf<TRight, TLeft>(TLeft left, TRight? right) where TRight : struct
         {
             return right.Value.ToEither(left);
         }
 
-        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, Func<TRight?> right) where TRight : struct
+        public static Either<TLeft, TRight> EitherOf<TRight, TLeft>(TLeft left, Func<TRight?> right) where TRight : struct
         {
             return right().Value.ToEither(left);
         }
 
-        public static Either<TLeft, TRight> EitherFrom<TRight, TLeft>(TLeft left, Func<TRight> right)
+        public static Either<TLeft, TRight> EitherOf<TRight, TLeft>(TLeft left, Func<TRight> right)
         {
             return right().ToEither(left);
         }
-
     }
 }
