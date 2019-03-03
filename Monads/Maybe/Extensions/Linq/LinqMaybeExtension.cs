@@ -1,47 +1,82 @@
 using System;
-using Monads.Common;
-using Monads.Maybe.Unsafe;
+using System.Collections.Generic;
+using System.Linq;
+using Monads.Utils;
+using static Monads.MaybeFactory;
 
-namespace Monads.Maybe.Linq
+namespace Monads.Extensions.Linq
 {
-    public static class LinqMaybeExtension
+    public static class LnqMaybeExtension
     {
-        public static Maybe<TData> Select<TSource, TData>(
-            this Maybe<TSource> maybe, 
-            Func<TSource, TData> selector)
+        public static Maybe<TSource> ElementAtOrNothing<TSource>(this IEnumerable<TSource> source, int index)
         {
-            Assert.ArgumentIsNotNull(selector(maybe.ValueOrDefault()));
+            Assert.ArgumentIsNotNull(source);
 
-            return maybe.Bind(selector);
+            var item = source.ElementAtOrDefault(index); 
+
+            if (EqualityComparer<TSource>.Default.Equals(item, default)) 
+            {
+                return Nothing;
+            }
+
+            return item;
         }
 
-        public static Maybe<TData> SelectMany<TSource, TData>(
-            this Maybe<TSource> maybe, 
-            Func<TSource, Maybe<TData>> selector) 
+        public static IEnumerable<TSource> Values<TSource>(this IEnumerable<Maybe<TSource>> source)
         {
-            Assert.ArgumentIsNotNull(selector(maybe.ValueOrDefault()));
+            Assert.ArgumentIsNotNull(source);
 
-            return maybe.Bind(selector);
+            return source
+                .Where(x => x.HasValue())
+                .Select(x => x.ForceValue);
         }
 
-        public static Maybe<TDataResult> SelectMany<TSource, TData, TDataResult>(
-            this Maybe<TSource> maybe, 
-            Func<TSource, Maybe<TData>> selector, 
-            Func<TSource, TData, TDataResult> resultSelector)
+        public static Maybe<TSource> FirstOrNothing<TSource>(this IEnumerable<TSource> source)
         {
-            Assert.ArgumentIsNotNull(selector(maybe.ValueOrDefault()));
+            Assert.ArgumentIsNotNull(source);
 
-            return maybe.Bind(x => selector(x).Bind(y => resultSelector(x, y)));
+            return source.Any() ? MaybeOf(source.First()) : Nothing;
         }
 
-        public static Maybe<TData> Where<TData>(
-            this Maybe<TData> maybe, 
-            Func<TData, bool> condition)
+        public static Maybe<TSource> FirstOrNothing<TSource>(
+            this IEnumerable<TSource> source, 
+            Func<TSource, bool> condition)
         {
-            return maybe.HasValue() | condition(maybe.Value)
-                ? maybe.Value
-                : (Maybe<TData>)MaybeFactory.Nothing;
+            Assert.ArgumentIsNotNull(source);
+
+            return source.Any(condition) ? MaybeOf(source.First(condition)) : Nothing;
         }
 
+        public static Maybe<TSource> LastOrNothing<TSource>(this IEnumerable<TSource> source)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            return source.Any() ? MaybeOf(source.Last()) : Nothing;
+        }
+
+        public static Maybe<TSource> LastOrNothing<TSource>(
+            this IEnumerable<TSource> source, 
+            Func<TSource, bool> condition)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            return source.Any(condition) ? MaybeOf(source.Last(condition)) : Nothing;
+        }
+
+        public static Maybe<TSource> SingleOrNothing<TSource>(this IEnumerable<TSource> source)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            return source.Count() == 1 ? MaybeOf(source.Single()) : Nothing;
+        }
+
+        public static Maybe<TSource> SingleOrNothing<TSource>(
+            this IEnumerable<TSource> source, 
+            Func<TSource, bool> condition)
+        {
+            Assert.ArgumentIsNotNull(source);
+
+            return source.Where(condition).SingleOrNothing();
+        }
     }
 }
