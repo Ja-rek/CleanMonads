@@ -1,22 +1,22 @@
 using System;
 
-namespace Monads.Maybe.Unsafe
+namespace Monads.Extensions.Unsafe
 {
     public static class UnsafeMaybeExtension
     {
         public static TSome ValueOrDefault<TSome>(this Maybe<TSome> source)
         {
-            return source.Value;
+            return source.ForceValue;
         }
 
         public static TSome? ToNullable<TSome>(this Maybe<TSome> source) where TSome : struct
         {
-            return source.Value;
+            return source.ForceValue;
         }
 
         public static TSome Value<TSome>(this Maybe<TSome> source)
         {
-            var value = source.Value;
+            var value = source.ForceValue;
 
             if (value == null) 
             {
@@ -28,7 +28,7 @@ namespace Monads.Maybe.Unsafe
 
         public static TSome ValueOrFail<TSome>(this Maybe<TSome> source, string message)
         {
-            var value = source.Value;
+            var value = source.ForceValue;
 
             if (value == null) 
             {
