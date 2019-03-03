@@ -1,7 +1,6 @@
 using System;
-using static Monads.Either.EitherFactory;
 
-namespace Monads.Either
+namespace Monads
 {
     public static class CastEitherExtension
     {

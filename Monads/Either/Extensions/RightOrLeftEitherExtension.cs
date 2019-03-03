@@ -1,12 +1,10 @@
-namespace Monads.Either
+namespace Monads
 {
-    public static class LeftOrRightEitherExtension
+    public static class RightOrLeftEitherExtension
     {
         public static TData RightOrLeft<TData>(this Either<TData, TData> source) 
         { 
-            EitherAssert.LeftOrRightExist(source);
-
-            return source.IsRight() ? source.Right : source.Left ;
+            return source.IsRight() ? source.ForceRight : source.ForceLeft ;
         }
     }
 }
