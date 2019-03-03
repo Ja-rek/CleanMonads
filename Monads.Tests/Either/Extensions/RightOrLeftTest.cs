@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using Monads.Either;
 using System;
 
 namespace Monads.Tests.Either.Extensions
@@ -20,13 +19,6 @@ namespace Monads.Tests.Either.Extensions
             var actual = leftInt_10.RightOrLeft();
 
             Assert.AreEqual(int_10, actual);
-        }
-
-        [Test]
-        [TestCase(null)]
-        public void RightOrLeft_WhenSourceIsNull_ThrowException(Either<int, int> source)
-        {
-            Assert.Throws<InvalidOperationException>(() => source.RightOrLeft());
         }
     }
 }

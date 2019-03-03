@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using Monads.Maybe;
 
 namespace Monads.Tests.Maybe.Extensions
 {
