@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
     <Title>Clean Monads</Title>
-    <Description>It's an optimal implementation of Maybe and Either Monads for C# with some extra utils.</Description>
+    <Description>It's an implementation of "Maybe" and "Either" monads for C# with extra utils, extensions, and integrations.</Description>
     <PackageProjectUrl>https://github.com/Ja-rek/CleanMonads</PackageProjectUrl>
     <PackageTags>Optional, Maybe, Either, Monad, CleanMonads</PackageTags>
     <PackageId>CleanMonads</PackageId>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Ja-Rek</Authors>
   </PropertyGroup>
 
