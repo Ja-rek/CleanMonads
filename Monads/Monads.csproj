@@ -5,6 +5,7 @@
     <LangVersion>7.3</LangVersion>
     <Title>Clean Monads</Title>
     <Description>It's an implementation of "Maybe" and "Either" monads for C# with extra utils, extensions, and integrations.</Description>
+    <PackageIconUrl>https://github.com/Ja-rek/CleanMonads/blob/master/Icon.png?raw=true</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Ja-rek/CleanMonads</PackageProjectUrl>
     <PackageTags>Optional, Maybe, Either, Monad, CleanMonads</PackageTags>
     <PackageId>CleanMonads</PackageId>
