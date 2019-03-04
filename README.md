@@ -1,4 +1,6 @@
-# Clean Monad
+# Clean Monads
+
+![CleanMonads](https://github.com/Ja-rek/CleanMonads/blob/master/Icon.png?raw=true)
 
  [![nuget](https://img.shields.io/nuget/v/cleanmonads.svg)](https://www.nuget.org/packages/cleanmonads/) [![Build Status](https://travis-ci.org/Ja-rek/CleanMonads.svg?branch=master)](https://travis-ci.org/Ja-rek/CleanMonads)
 
