@@ -6,6 +6,8 @@ namespace Monads
     {
         public static Maybe<TData> Just<TData>(TData value)
         {
+            Assert.ArgumentIsNotNull(value, nameof(value));
+
             return value;
         }
 
@@ -31,9 +33,9 @@ namespace Monads
             return MaybeOf(value());
         }
 
-        public static Maybe<INothing> Nothing 
+        public static Maybe<NotDefined> Nothing 
         { 
-            get => new Maybe<INothing>(false); 
+            get => new Maybe<NotDefined>(false); 
         }
 
         public static Maybe<TResult> NothingOf<TResult>() 
