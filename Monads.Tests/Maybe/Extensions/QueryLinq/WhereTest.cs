@@ -6,7 +6,7 @@ namespace Monads.Tests.Maybe.Extensions.Query
     internal class WhereTest : TestTemplate
     {
         [Test]
-        public void QueryWhere_WhenMaybeHasValue_ReturnsMaybeByCondtion()
+        public void QueryWhere_WhenFieldHasValue_ReturnsMaybeByCondtion()
         {
             var actual = from some in maybeInt_10
                          where some == 10
@@ -16,7 +16,7 @@ namespace Monads.Tests.Maybe.Extensions.Query
         }
 
         [Test]
-        public void QueryWhere_WhenMaybeHasNothing_ReturnsMaybeWithNothing()
+        public void QueryWhere_WhenFieldHasNothing_ReturnsMaybeWithNothing()
         {
             var actual = from some in int_Nothing
                          where some == 10

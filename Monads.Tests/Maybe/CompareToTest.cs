@@ -6,7 +6,7 @@ namespace Monads.Tests.Maybe
     internal class CompareToTest : TestTemplate
     {
         [Test]
-        public void CompareTo_WhenMaybeHasTheSameValues_ReturnsZero()
+        public void CompareTo_WhenFieldHasTheSameValues_ReturnsZero()
         {
             Assert.True(maybeStr_Any.CompareTo(str_Any) == 0);
             Assert.True(maybeStr_Any.CompareTo(maybeStr_Any) == 0);
@@ -22,7 +22,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void CompareTo_WhenLeftMaybeIsGreater_ReturnsOne()
+        public void CompareTo_WhenLeftFieldIsGreater_ReturnsOne()
         {
             Assert.True(maybeInt_20.CompareTo(int_10) ==  1);
             Assert.True(maybeInt_20.CompareTo(maybeInt_10) ==  1);
@@ -32,7 +32,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void CompareTo_WhenLeftMaybeIsLesser_ReturnsMinusOne()
+        public void CompareTo_WhenLeftFieldIsLesser_ReturnsMinusOne()
         {
             Assert.True(maybeInt_10.CompareTo(int_20) ==  -1);
             Assert.True(maybeInt_10.CompareTo(maybeInt_20) ==  -1);
@@ -42,7 +42,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void CompareTo_WhenLeftMaybeHasNothing_ReturnsMinusOne()
+        public void CompareTo_WhenLeftFieldHasNothing_ReturnsMinusOne()
         {
             Assert.True(int_Nothing.CompareTo(maybeInt_Any) ==  -1);
             Assert.True(int_Nothing.CompareTo(int_Any) ==  -1);
@@ -52,7 +52,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void CompareTo_WhenRightMaybeHasNothing_ReturnsOne()
+        public void CompareTo_WhenRightFieldHasNothing_ReturnsOne()
         {
             Assert.True(maybeInt_Any.CompareTo(int_Nothing) ==  1);
             Assert.True(maybeStr_Any.CompareTo(str_Nothing) ==  1);
@@ -60,7 +60,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void CompareTo_WhenLeftMaybeIsDefault_ReturnsMinusOne()
+        public void CompareTo_WhenLeftFieldIsDefault_ReturnsMinusOne()
         {
             Assert.True(maybeInt_Default.CompareTo(maybeInt_Any) ==  -1);
             Assert.True(maybeInt_Default.CompareTo(int_Any) ==  -1);
@@ -70,7 +70,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void CompareTo_WhenRightMaybeIsDefault_ReturnsOne()
+        public void CompareTo_WhenRightFieldIsDefault_ReturnsOne()
         {
             Assert.True(maybeInt_Any.CompareTo(maybeInt_Default) ==  1);
             Assert.True(maybeStr_Any.CompareTo(maybeStr_Default) ==  1);

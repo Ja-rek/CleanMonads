@@ -7,7 +7,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
     internal class DoWhenHasValueTest : TestTemplate
     {
         [Test]
-        public void DoWhenHasValue_WhenMaybeHasValue_RunMethod()
+        public void DoWhenHasValue_WhenFieldHasValue_RunMethod()
         {
             var listMock = Substitute.For<IList<int>>();
 
@@ -18,7 +18,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
         }
 
         [Test]
-        public void DoWhenHasValue_WhenMaybeHasNoValue_NotRunMethod()
+        public void DoWhenHasValue_WhenFieldHasNoValue_NotRunMethod()
         {
             var listMock = Substitute.For<IList<int>>();
 

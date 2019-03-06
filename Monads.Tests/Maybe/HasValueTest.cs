@@ -6,7 +6,7 @@ namespace Monads.Tests.Maybe
     internal class HasValueTest : TestTemplate
     {
         [Test]
-        public void HasValue_WhenMaybeHasValue_RetrunsTrue()
+        public void HasValue_WhenFieldHasValue_RetrunsTrue()
         {
             Assert.True(maybeStr_Any.HasValue());
             Assert.True(maybeInt_Any.HasValue());
@@ -14,7 +14,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void HasValue_WhenMaybeHasNoValue_RetrunsFalse()
+        public void HasValue_WhenFieldHasNoValue_RetrunsFalse()
         {
             Assert.False(str_Nothing.HasValue());
             Assert.False(int_Nothing.HasValue());
@@ -24,7 +24,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void HasValue_WhenMaybeHasValueAnConditionIsMet_RetrunsTrue()
+        public void HasValue_WhenFieldHasValueAnConditionIsMet_RetrunsTrue()
         {
             Assert.True(maybeStr_Any.HasValue(x => x == str_Any));
             Assert.True(maybeInt_10.HasValue(x => x < 20));
@@ -32,7 +32,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void HasValue_WhenMaybeHasValueAnConditionIsNotMet_RetrunsTrue()
+        public void HasValue_WhenFieldHasValueAnConditionIsNotMet_RetrunsTrue()
         {
             Assert.False(maybeStr_Any.HasValue(x => x == "wrong string"));
             Assert.False(maybeInt_10.HasValue(x => x < 5));

@@ -6,7 +6,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
     internal class ValueOrTest : TestTemplate
     {
         [Test]
-        public void ValueOr_WhenMaybeHasValue_RetrunsValue()
+        public void ValueOr_WhenFieldHasValue_RetrunsValue()
         {
             var actual = maybeInt_10.ValueOr(() => 20);
 
@@ -14,7 +14,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
         }
 
         [Test]
-        public void ValueOr_WhenMaybeHasNothing_RetrunsAlternativeValue()
+        public void ValueOr_WhenFieldHasNothing_RetrunsAlternativeValue()
         {
             var actual = str_Nothing.ValueOr(() => str_Any);
 

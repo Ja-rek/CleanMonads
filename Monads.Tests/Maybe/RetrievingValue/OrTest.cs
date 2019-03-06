@@ -5,7 +5,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
     internal class OrTest : TestTemplate
     {
         [Test]
-        public void Or_WhenMaybeHasValue_RetrunsDefaultMaybe()
+        public void Or_WhenFieldHasValue_RetrunsDefaultMaybe()
         {
 
             var actual = maybeInt_10.Or(() => maybeInt_20);
@@ -14,7 +14,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
         }
 
         [Test]
-        public void Or_WhenMaybeHasNothing_RetrunsAlternativeMaybe()
+        public void Or_WhenFieldHasNothing_RetrunsAlternativeMaybe()
         {
             var actual = str_Nothing.Or(() => maybeStr_Any);
 

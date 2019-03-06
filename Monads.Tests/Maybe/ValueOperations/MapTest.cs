@@ -5,7 +5,7 @@ namespace Monads.Tests.Maybe.ValueOperations
     internal class MapTest : TestTemplate
     {
         [Test]
-        public void Map_WhenMaybeHasValue_RetrunsMapedMaybe()
+        public void Map_WhenFieldHasValue_RetrunsMapedMaybe()
         {
             var actual = maybeInt_10.Map(x => x + 10);
 
@@ -13,7 +13,7 @@ namespace Monads.Tests.Maybe.ValueOperations
         }
 
         [Test]
-        public void Map_WhenMaybeHasNoValueAndTryResoveMethodThatThrowExceptionWhenArgumentIsNull_ThenDoNotThrowsException()
+        public void Map_WhenFieldHasNoValueAndTryResoveMethodThatThrowExceptionWhenArgumentIsNull_ThenDoNotThrowsException()
         {
             var actual = str_Nothing
                 .Map(x => x.Replace("any", string.Empty));
@@ -22,7 +22,7 @@ namespace Monads.Tests.Maybe.ValueOperations
         }
 
         [Test]
-        public void Map_WhenMaybeHasNothing_CanNotReturnMapedMaybe()
+        public void Map_WhenFieldHasNothing_CanNotReturnMapedMaybe()
         {
             var actual = int_Nothing.Map(x => x + 10);
 

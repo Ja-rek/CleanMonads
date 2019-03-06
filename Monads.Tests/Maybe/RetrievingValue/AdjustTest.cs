@@ -6,7 +6,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
     internal class AdjustTest : TestTemplate
     {
         [Test]
-        public void Adjust_WhenMaybeHasValue_RetrunsJust()
+        public void Adjust_WhenFieldHasValue_RetrunsJust()
         {
             var expectedNumber10 = 10;
 
@@ -18,7 +18,7 @@ namespace Monads.Tests.Maybe.RetrievingValue
         }
 
         [Test]
-        public void Adjust_WhenMaybeHasNoValue_ReturnsNothing()
+        public void Adjust_WhenFieldHasNoValue_ReturnsNothing()
         {
             var expectedNothing = "";
 

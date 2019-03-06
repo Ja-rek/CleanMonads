@@ -5,7 +5,7 @@ namespace Monads.Tests.Maybe.ValueOperations
     internal class FilterTest : TestTemplate
     {
         [Test]
-        public void Filter_WhenMaybeHasValue_ReturnsMaybeByCondtion()
+        public void Filter_WhenFieldHasValue_ReturnsMaybeByCondtion()
         {
             var actual = maybeInt_10.Filter(x => x == 10);
 
@@ -13,7 +13,7 @@ namespace Monads.Tests.Maybe.ValueOperations
         }
 
         [Test]
-        public void Filter_WhenMaybeHasNothing_ReturnsMaybeWitNothing()
+        public void Filter_WhenFieldHasNothing_ReturnsMaybeWitNothing()
         {
             var actual = int_Nothing.Filter(x => x == 10);
 

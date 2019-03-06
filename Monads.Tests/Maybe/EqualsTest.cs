@@ -24,7 +24,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void Equals_WhenLeftMaybeIsGreater_RetrunsFalse()
+        public void Equals_WhenLeftFieldIsGreater_RetrunsFalse()
         {
             Assert.False(maybeInt_20.Equals(int_10));
             Assert.False(maybeInt_20.Equals(maybeInt_10));
@@ -34,7 +34,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void Equals_WhenLeftMaybeIsLesser_RetrunsFalse()
+        public void Equals_WhenLeftFieldIsLesser_RetrunsFalse()
         {
             Assert.False(maybeInt_10.Equals(int_20));
             Assert.False(maybeInt_10.Equals(maybeInt_20));
@@ -44,7 +44,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void Equals_WhenLeftMaybeHasNothing_RetrunsFalse()
+        public void Equals_WhenLeftFieldHasNothing_RetrunsFalse()
         {
             Assert.False(int_Nothing.Equals(maybeInt_Any));
             Assert.False(int_Nothing.Equals(int_Any));
@@ -54,7 +54,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void Equals_WhenRightMaybeHasNothing_RetrunsFalse()
+        public void Equals_WhenRightFieldHasNothing_RetrunsFalse()
         {
             Assert.False(maybeInt_Any.Equals(int_Nothing));
             Assert.False(maybeStr_Any.Equals(str_Nothing));
@@ -62,7 +62,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void Equals_WhenLeftMaybeIsDefault_RetrunsFalse()
+        public void Equals_WhenLeftFieldIsDefault_RetrunsFalse()
         {
             Assert.False(maybeInt_Default.Equals(maybeInt_Any));
             Assert.False(maybeInt_Default.Equals(int_Any));
@@ -72,7 +72,7 @@ namespace Monads.Tests.Maybe
         }
 
         [Test]
-        public void Equals_WhenRightMaybeIsDefault_RetrunsFalse()
+        public void Equals_WhenRightFieldIsDefault_RetrunsFalse()
         {
             Assert.False(maybeInt_Any.Equals(maybeInt_Default));
             Assert.False(maybeStr_Any.Equals(maybeStr_Default));

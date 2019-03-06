@@ -7,7 +7,7 @@ namespace Monads.Tests.Maybe.Extensions.QueryLinq
     internal class SelectManyTest : TestTemplate
     {
         [Test]
-        public void QuerySelectMany_WhenMaybeHasValue_RetrunsSelectedMaybe()
+        public void QuerySelectMany_WhenFieldHasValue_RetrunsSelectedMaybe()
         {
             var actual = from justTwo in Just(Just(10))
                          from just in justTwo
@@ -17,7 +17,7 @@ namespace Monads.Tests.Maybe.Extensions.QueryLinq
         }
 
         [Test]
-        public void QuerySelectMany_WhenMaybeHasNothing_CanNotRetrunSelectedMaybe()
+        public void QuerySelectMany_WhenFieldHasNothing_CanNotRetrunSelectedMaybe()
         {
             var actual = from justTwo in Just(MaybeFactory.MaybeOf<int>((int?)null))
                          from just in justTwo

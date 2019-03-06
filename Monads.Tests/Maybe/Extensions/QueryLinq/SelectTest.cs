@@ -6,7 +6,7 @@ namespace Monads.Tests.Maybe.Extensions.QueryLinq
     internal class SelectTest : TestTemplate
     {
         [Test]
-        public void QuerySelect_WhenMaybeHasValue_RetrunsSelectedMaybe()
+        public void QuerySelect_WhenFieldHasValue_RetrunsSelectedMaybe()
         {
             var actual = from just in maybeInt_10
                          select just + 10;
@@ -15,7 +15,7 @@ namespace Monads.Tests.Maybe.Extensions.QueryLinq
         }
 
         [Test]
-        public void QuerySelect_WhenMaybeHasNothing_CanNotReturnSelectedMaybe()
+        public void QuerySelect_WhenFieldHasNothing_CanNotReturnSelectedMaybe()
         {
             var actual = from just in int_Nothing
                          select just + 10;
