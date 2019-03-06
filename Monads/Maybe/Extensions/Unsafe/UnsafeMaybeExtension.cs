@@ -9,7 +9,7 @@ namespace Monads.Extensions.Unsafe
             return source.ForceValue;
         }
 
-        public static TSome? ToNullable<TSome>(this Maybe<TSome> source) where TSome : struct
+        public static TSome? NullableValue<TSome>(this Maybe<TSome> source) where TSome : struct
         {
             return source.ForceValue;
         }

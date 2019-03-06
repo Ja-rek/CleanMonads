@@ -52,7 +52,7 @@ namespace Monads
                 case Maybe<TData> maybe:
                     return this.Equals(maybe);
 
-                case Maybe<INothing> maybe:
+                case Maybe<NotDefined> maybe:
                     return this.Equals(maybe);
             
                 case TData value when this.hasValue:

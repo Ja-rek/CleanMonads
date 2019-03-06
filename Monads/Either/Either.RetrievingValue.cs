@@ -1,5 +1,4 @@
 using System;
-using Monads.Utils;
 
 namespace Monads
 {
