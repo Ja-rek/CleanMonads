@@ -29,10 +29,9 @@ Use one of the the commands to install.
 
 ### Last Version
 
-#### V2.0.1
+#### V2.1.1
 
-#### Changes:
+### New Features!
 
-  - Fixed bug in method "Just" of "MaybeFactory" 
-
-
+  - Added extension methods like "RightOrZero", "LeftOrEmpty" 
+  - Added factory methods like "Right\<TLeft, TRight\>"
