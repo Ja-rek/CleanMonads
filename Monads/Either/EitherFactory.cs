@@ -6,12 +6,22 @@ namespace Monads
     {
         public static Either<TLeft, NotDefined> Left<TLeft>(TLeft left)
         {
-            return left.ToLeft();
+            return left;
+        }
+
+        public static Either<TLeft, TRight> Left<TLeft, TRight>(TLeft left)
+        {
+            return left;
         }
 
         public static Either<NotDefined, TRight> Right<TRight>(TRight right)
         {
-            return right.ToRight();
+            return right;
+        }
+
+        public static Either<TLeft, TRight> Right<TLeft, TRight>(TRight right)
+        {
+            return right;
         }
 
         public static Either<TLeft, TRight> EitherOf<TRight, TLeft>(TLeft left, TRight right)
