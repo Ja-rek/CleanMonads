@@ -43,5 +43,15 @@ namespace Monads
         { 
             return this.Adjust(left => alternative, right => right);
         }
+
+        public TLeft LeftOr(Func<TRight, TLeft>  alternative)
+        { 
+            return this.LeftOr(alternative(this.right));
+        }
+
+        public TLeft LeftOr(TLeft  alternative)
+        { 
+            return this.Adjust(left => left, right => alternative);
+        }
     }
 }
