@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
 
-namespace Monads.Tests.Either.ValueOperations
+namespace Monads.Tests.Either.OperationsOnValues
 {
     internal class MapTest : TestTemplate
     {

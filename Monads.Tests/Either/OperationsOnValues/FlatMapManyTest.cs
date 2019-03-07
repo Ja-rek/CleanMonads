@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using static Monads.EitherFactory;
 
-namespace Monads.Tests.Either.ValueOperations
+namespace Monads.Tests.Either.OperationsOnValues
 {
     internal class FlatMapTest : TestTemplate
     {
