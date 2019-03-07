@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using static Monads.MaybeFactory;
 
-namespace Monads.Tests.Maybe.ValueOperations
+namespace Monads.Tests.Maybe.OperationsOnValue
 {
     internal class FlatMapTest : TestTemplate
     {

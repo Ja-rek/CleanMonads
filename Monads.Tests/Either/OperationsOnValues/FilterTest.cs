@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Monads.Tests.Either.ValueOperations
+namespace Monads.Tests.Either.OperationsOnValues
 {
     internal class FilterTest : TestTemplate
     {

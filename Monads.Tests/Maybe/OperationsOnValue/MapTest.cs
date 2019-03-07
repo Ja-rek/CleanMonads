@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Monads.Tests.Maybe.ValueOperations
+namespace Monads.Tests.Maybe.OperationsOnValue
 {
     internal class MapTest : TestTemplate
     {
