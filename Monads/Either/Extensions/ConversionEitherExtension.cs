@@ -2,7 +2,7 @@ using System;
 
 namespace Monads
 {
-    public static class CastEitherExtension
+    public static class ConversionEitherExtension
     {
         public static Either<TLeft, TRight> ToEither<TLeft, TRight>(this TRight right, TLeft left)
         {

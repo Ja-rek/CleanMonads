@@ -3,7 +3,7 @@ using static Monads.MaybeFactory;
 
 namespace Monads
 {
-    public static class CastMaybeExtension
+    public static class ConversionMaybeExtension
     {
         public static Maybe<TData> ToMaybe<TData>(this TData source)
         {
