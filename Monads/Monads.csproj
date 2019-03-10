@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://github.com/Ja-rek/CleanMonads</PackageProjectUrl>
     <PackageTags>Optional, Maybe, Either, Monad, CleanMonads</PackageTags>
     <PackageId>CleanMonads</PackageId>
-    <Version>2.1.1</Version>
+    <Version>2.1.2</Version>
     <Authors>Ja-Rek</Authors>
   </PropertyGroup>
 

@@ -29,9 +29,8 @@ Use one of the the commands to install.
 
 ### Last Version
 
-#### V2.1.1
+#### V2.1.2
 
 ### New Features!
 
-  - Added extension methods like "RightOrZero", "LeftOrEmpty" 
-  - Added factory methods like "Right\<TLeft, TRight\>"
+  - Fixed bug in extension method of "Maybe" named "Filter" 
