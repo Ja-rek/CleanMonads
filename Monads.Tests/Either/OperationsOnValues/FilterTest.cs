@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Monads.Tests.Either.OperationsOnValues
@@ -18,6 +19,12 @@ namespace Monads.Tests.Either.OperationsOnValues
             var actual = rightInt_10.Filter(x => x != 10, str_Any);
 
             Assert.AreEqual(leftStr_Any, actual);
+        }
+
+        [Test]
+        public void Filter_WhenEitherContainLeftValue_DoNotExecuteCondition()
+        {
+            leftInt_10.Filter(x => throw new Exception(), int_10);
         }
 
         [Test]
