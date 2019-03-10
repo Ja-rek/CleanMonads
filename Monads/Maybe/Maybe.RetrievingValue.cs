@@ -13,7 +13,7 @@ namespace Monads
 
         public TResult Adjust<TResult>(Func<TData, TResult> just, TResult nothing)
         {
-            if (this.HasValue())
+            if (this.hasValue)
             {
                 Assert.ArgumentIsNotNull(just(this.value));
 
@@ -35,34 +35,24 @@ namespace Monads
 
         public void DoWhenHasNoValue(Action nothing) 
         {
-            if (!this.HasValue()) nothing();
+            if (!this.hasValue) nothing();
         }
 
         public void DoWhenHasValue(Action<TData> just) 
         {
-            if (this.HasValue()) just(this.value);
+            if (this.hasValue) just(this.value);
         }
 
         public TData ValueOr(TData alternative)
         { 
             Assert.ArgumentIsNotNull(alternative);
 
-            return !this.HasValue() ? (TData)alternative : this.value;
+            return !this.hasValue ? (TData)alternative : this.value;
         }
 
         public TData ValueOr(Func<TData> alternativeFactory)
         {
             return this.ValueOr(alternativeFactory());
-        }
-
-        public Maybe<TData> Or(Maybe<TData> alternative)
-        { 
-            return !this.HasValue() ? alternative : this;
-        }
-
-        public Maybe<TData> Or(Func<Maybe<TData>> alternativeFactory)
-        {
-            return this.Or(alternativeFactory());
         }
     }
 }

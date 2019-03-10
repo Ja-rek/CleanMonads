@@ -11,7 +11,7 @@ namespace Monads
 
         public Either<TLeft, TResult> Map<TResult>(Func<TRight, TResult> predicate)
         {
-            if (this.IsRight()) 
+            if (this.isRight) 
             {
                 Assert.ArgumentIsNotNull(predicate(this.right), nameof(predicate));
 
@@ -28,7 +28,7 @@ namespace Monads
 
         public Either<TLeft, TRight> Filter(Func<TRight, bool> condition, TLeft left)
         {
-            if (this.IsRight() && condition(this.right)) 
+            if (this.isRight && condition(this.right)) 
             {
                 return this.right;
             }

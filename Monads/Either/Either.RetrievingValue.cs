@@ -6,7 +6,7 @@ namespace Monads
     {
         public TResutl Adjust<TResutl>(Func<TLeft, TResutl> left, Func<TRight, TResutl> right)
         {
-            if (this.IsRight())
+            if (this.isRight)
             {
                 Assert.ArgumentIsNotNull(right(this.right), nameof(right));
 
@@ -26,12 +26,12 @@ namespace Monads
 
         public void DoWhenRight(Action<TRight> right)
         {
-            if (this.IsRight()) right(this.right);
+            if (this.isRight) right(this.right);
         }
 
         public void DoWhenLeft(Action<TLeft> left)
         {
-            if (this.IsLeft()) left(this.left);
+            if (this.isLeft) left(this.left);
         }
 
         public TRight RightOr(Func<TLeft, TRight>  alternative)
